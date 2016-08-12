@@ -1,0 +1,23 @@
+music shift
+tastekid x soundcloud x pandora
+people post their favorite artists, 
+you can go through users that like the same bands, but also have to like different bands.
+share pandora channels and likes
+share soundcloud
+upload music
+highlight bands that are different in one color
+  bands that are the same in another
+compare bands that are liked
+soundcloud api to show the playlists you have
+pandora api to show the channels that you created
+
+
+Codebase - 
+  clean up the website
+  create a user page
+  create an admin page
+  search bar
+  hashtags
+  what else does it bring to to the table 
+  comments
+
