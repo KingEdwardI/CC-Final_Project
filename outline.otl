@@ -1,0 +1,85 @@
+What is the most important thing that I need?
+    matching artists
+next most important thing?
+    user accounts
+after that?
+
+start by hardcoding things and getting them to work.
+then allow for input and updating.
+
+percentage matching for relevance
+
+===============
+	----- MVP -----
+		matching artists
+		user accounts
+		user interface
+
+	----- EXTRAS -----
+		matching genres, songs, etc.
+		pandora api -- doable
+		soundcloud api -- doable
+		upload files
+		music player
+
+	----- TODO -----
+		match artists
+		user accounts
+		user interface
+		user input
+		user registration
+		match etc.
+===============
+
+===================
+----- objects -----
+	users {
+	  id: string
+	  password: string
+	} -- will require authentication
+
+	musicList {
+	  artists: []
+	  songs: []
+	  genre: []
+	  ...: []
+	  ...: []
+	}
+
+pandoraList{???}
+soundcloudList{???}
+
+----- pages -----
+User Account
+	- navbar
+		= to matches
+		= logout
+		= something else?
+	- user info
+		= username
+		= name
+		= other info?
+	- user likes
+		= artists
+		= songs
+		= genres
+		= ...
+	- likes saved for later
+	- suggested users
+	- soundcloud
+	- pandora
+	- other extras
+
+matches
+	- navbar
+		= to account
+		= logout
+		= something else?
+	- display
+		= similar liked option
+			  + artists/songs/genres/...
+		= save for later button next to each item
+		= next user likes
+
+another page would be cool, but I don't know what would be on it...
+===================
