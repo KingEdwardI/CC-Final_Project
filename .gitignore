@@ -3,5 +3,4 @@ node_modules
 *.swp
 pre
 .DS_Store
-pug-files
-*.pug
+dist

@@ -1,0 +1,6 @@
+div.col-md-4
+  <input id="title" type='text' placeholder='Title' [(ngModel)]="list_title"/>
+  <p> {{list_title}} </p>
+  button.btn.btn-default((click)='createList()') Create New
+  br
+  <list-view *ngFor="let list of listViewService.lists; let i = index" [newList]="list"></list-view>

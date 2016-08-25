@@ -1,0 +1,14 @@
+div
+  nav.navbar.navbar-full.navbar-dark(style="margin-bottom:0px;  border-radius:0px;")
+    a.navbar-brand(routerLink="/") Music ^
+    ul.nav.navbar-nav.pull-right
+      <li [class.active]="router.isActive('/',true)" class="nav-item active">
+        a.nav-link(routerLink="/login") Login
+      <li [class.active]="router.isActive('/login', true)" class="nav-item active">
+        a.nav-link( (click)="loginService.deauthenticate()" ) Logout
+      <li [class.active]="router.isActive('/', true)" class="nav-item active">
+        a.nav-link(routerLink="/mylist") My Lists
+      <li [class.active]="router.isActive('/', true)" class="nav-item active">
+        a.nav-link(routerLink="/find") Discover
+  div
+    router-outlet
