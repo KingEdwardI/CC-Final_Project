@@ -1,0 +1,3 @@
+<div class="col-md-4"><label> {{listTitle.title | json}} </label>
+<input id='item' type='text' placeholder="Add New" [(ngModel)]="list_item">
+<p> {{list_item}} </p><button class="btn btn-default" (click)="addToList()">Add to list</button></div><!--<list-item *ngFor="let item of listViewService.list; let i = index" [newListItem]="item"><list-item>-->
