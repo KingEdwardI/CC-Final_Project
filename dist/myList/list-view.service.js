@@ -32,18 +32,19 @@ var ListViewService = (function () {
             this.lists.push(res);
         }.bind(this));
     };
-    ListViewService.prototype.addToList = function (i, list_item) {
+    ListViewService.prototype.addToList = function (id, new_list_item) {
         return this.apiService.post("/update", JSON.stringify({
-            id: i,
-            item: list_item
+            id: id,
+            item: new_list_item
         })).do(function (res) {
-            this.overwrite(this.lists[i], res);
+            console.log(res);
+            this.pushToList(id, this.lists, res);
         }.bind(this));
     };
-    ListViewService.prototype.overwrite = function (orig, newValues) {
-        for (var i in newValues) {
-            if (newValues.hasOwnProperty(i)) {
-                orig[i] = newValues[i];
+    ListViewService.prototype.pushToList = function (id, orig, new_song) {
+        for (var i in orig) {
+            if (orig._id === id) {
+                orig[i].item.push(new_song);
             }
         }
     };

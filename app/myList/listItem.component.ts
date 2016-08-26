@@ -10,11 +10,6 @@ import { ListViewService } from "./list-view.service";
 
 export class ListItemComponent {
   
-  constructor(private listViewService: ListViewService) {}
-
-  @Input("newListItem") listItem: string;
-
-
-
+  @Input("item") item;
 
 }

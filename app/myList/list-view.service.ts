@@ -27,21 +27,21 @@ export class ListViewService {
     }.bind(this));
   }
 
-  addToList(i, list_item) {
+  addToList(id, new_list_item) {
     return this.apiService.post("/update", JSON.stringify({
-      id: i,
-      item: list_item
+      id: id,
+      item: new_list_item
     })).do(function(res) {
-      this.overwrite(this.lists[i], res);
+      console.log(res);
+      this.pushToList(id, this.lists, res);
     }.bind(this));
   }
 
-  overwrite(orig, newValues) {
-    for ( let i in newValues ) {
-      if (newValues.hasOwnProperty(i)) {
-        orig[i] = newValues[i];
+  pushToList(id, orig, new_song) {
+    for (let i in orig) {
+      if (orig._id === id ) {
+        orig[i].item.push(new_song);
       }
     }
   }
-
 }

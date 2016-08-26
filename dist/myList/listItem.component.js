@@ -9,21 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var list_view_service_1 = require("./list-view.service");
 var ListItemComponent = (function () {
-    function ListItemComponent(listViewService) {
-        this.listViewService = listViewService;
+    function ListItemComponent() {
     }
     __decorate([
-        core_1.Input("newListItem"), 
-        __metadata('design:type', String)
-    ], ListItemComponent.prototype, "listItem", void 0);
+        core_1.Input("item"), 
+        __metadata('design:type', Object)
+    ], ListItemComponent.prototype, "item", void 0);
     ListItemComponent = __decorate([
         core_1.Component({
             selector: 'list-item',
             templateUrl: "../../html/list-item.html"
         }), 
-        __metadata('design:paramtypes', [list_view_service_1.ListViewService])
+        __metadata('design:paramtypes', [])
     ], ListItemComponent);
     return ListItemComponent;
 }());

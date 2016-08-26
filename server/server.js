@@ -41,6 +41,7 @@ app.post("/login", function(req,res) {
           status: "error"
         });  
       } else {
+        req.session.userId = data._id;
         res.send({
           status: "success",
           userInfo: data
@@ -106,6 +107,8 @@ app.get('/all', function(req,res) {
 app.post('/create', function(req, res) {
   console.log(req.body.list);
   var list = {
+    userId: req.session.userId,
+    index: req.body.list.id,
     title: req.body.list.title || "",
     items: []
   };
@@ -121,13 +124,10 @@ app.post('/create', function(req, res) {
 });
 
 app.post('/update', function(req, res) {
-  var id = req.body.item._id;
-  listItemModel.findOneAndUpdate(
-    { _id: id},
-    {$set : {
-      title: req.body.title,
-      items: []
-    }},
+  var id = req.body.id;
+  ListItemModel.findOneAndUpdate(
+    { _id : id},
+      {$push: {items: req.body.item}},
     {new : true},
     function(err, data) {
       if (err) {

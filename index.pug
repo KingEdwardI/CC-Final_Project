@@ -7,17 +7,17 @@ html
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet" href="../css/styles.css")
-    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-2.2.4.min.js")
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-    // load libraries
-    // Polyfills for older browsers
     script(src="node_modules/core-js/client/shim.min.js")
     script(src="node_modules/zone.js/dist/zone.js")
     script(src="node_modules/reflect-metadata/Reflect.js")
     script(src="node_modules/systemjs/dist/system.src.js")
     // configure SystemJS
     script(src="systemjs.config.js")
+    script(src="https://code.jquery.com/jquery-2.2.4.min.js")
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+    // load libraries
+    // Polyfills for older browsers
     script
       | System.import('app').catch(function(err){ console.error(err); });
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")

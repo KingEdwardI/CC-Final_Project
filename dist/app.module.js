@@ -30,6 +30,7 @@ var splash_component_1 = require("./splash.component");
 var api_service_1 = require("./api.service");
 var list_view_service_1 = require("./myList/list-view.service");
 var listView_component_1 = require("./myList/listView.component");
+var listItem_component_1 = require("./myList/listItem.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -45,6 +46,7 @@ var AppModule = (function () {
                 settings_component_1.SettingsComponent,
                 soundcloud_component_1.SoundcloudComponent,
                 listView_component_1.ListViewComponent,
+                listItem_component_1.ListItemComponent,
                 splash_component_1.SplashPage
             ],
             bootstrap: [main_container_component_1.MainContainer],

@@ -20,6 +20,7 @@ import { SplashPage } from "./splash.component";
 import { ApiService } from "./api.service";
 import { ListViewService } from "./myList/list-view.service";
 import { ListViewComponent } from "./myList/listView.component";
+import { ListItemComponent } from "./myList/listItem.component";
 
 
 
@@ -35,6 +36,7 @@ import { ListViewComponent } from "./myList/listView.component";
       SettingsComponent,
       SoundcloudComponent,
       ListViewComponent,
+      ListItemComponent,
       SplashPage
       ],
   bootstrap:    [ MainContainer ],
