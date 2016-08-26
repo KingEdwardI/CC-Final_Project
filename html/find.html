@@ -1,0 +1,1 @@
+<div class="col-md-4"><h3>Lists</h3><div><button (click)="test()">click</button><div *ngFor='let obj of listViewService.lists; let k = index'> {{obj.title}} <div *ngFor='let song of obj.items; let i = index'> {{song}} </div> </div></div></div>

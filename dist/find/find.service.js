@@ -9,12 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var api_service_1 = require("../api.service");
 var FindService = (function () {
-    function FindService() {
+    function FindService(apiService) {
+        this.apiService = apiService;
+        this.lists = [];
+        this.getAllLists().subscribe();
     }
+    FindService.prototype.getAllLists = function () {
+        return this.apiService.get("/all")
+            .do(function (res) {
+            this.lists = res;
+        }.bind(this));
+    };
     FindService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [api_service_1.ApiService])
     ], FindService);
     return FindService;
 }());
