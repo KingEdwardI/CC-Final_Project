@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var cors = require('cors');
 var mongoose = require('mongoose');
+var cookieParser = require('cookie-parser');
+var expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
 
 mongoose.connect("mongodb://localhost");
 
@@ -12,6 +15,7 @@ var ListItemModel = require("./list.model")(mongoose);
 var app = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true}));
 app.use(cors());
@@ -21,10 +25,27 @@ app.use(expressSession({
   saveUninitialized: false
 }));
 
+//app.use('/api', expressJwt({secret: secret}));
+
 app.use(function(req,res,next) {
   console.log(req.url);
   next();
 });
+
+/*app.post("/authenticate", function(req, res) {
+// authenticate user
+// set profile
+// send the profile inside the token
+var token = jwt.sign(profile, secret, { expiresInMintes: 60*5 });
+
+res.json({ token: token});
+});*/
+
+/*app.get("/api/restricted", function (req, res) {
+  res.json({
+    name: "foo"
+  });
+});*/
 
 app.post("/login", function(req,res) {
   UserModel.findOne({
@@ -42,6 +63,7 @@ app.post("/login", function(req,res) {
         });  
       } else {
         req.session.userId = data._id;
+        req.session.save();
         res.send({
           status: "success",
           userInfo: data
@@ -75,12 +97,14 @@ app.post("/signup", function(req, res) {
         password: req.body.password
       };
       var newUser = new UserModel(userInfo);
-      newUser.save(function(err)  {
+      newUser.save(function(err, data)  {
         if(err) {
           res.status(500);
           res.send("Error creating user");
           return;
         }
+        req.session.userId = data._id;
+        req.session.save();
         res.send({
           status: "success",
           userInfo: userInfo
@@ -105,7 +129,7 @@ app.get('/all', function(req,res) {
 });
 
 app.post('/create', function(req, res) {
-  console.log(req.body.list);
+  console.log(req.session.userId);
   var list = {
     userId: req.session.userId,
     index: req.body.list.id,

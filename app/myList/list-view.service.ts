@@ -32,15 +32,14 @@ export class ListViewService {
       id: id,
       item: new_list_item
     })).do(function(res) {
-      console.log(res);
-      this.pushToList(id, this.lists, res);
+      this.pushToList(id, this.lists, res.items[res.items.length - 1]);
     }.bind(this));
   }
 
   pushToList(id, orig, new_song) {
     for (let i in orig) {
-      if (orig._id === id ) {
-        orig[i].item.push(new_song);
+      if (orig[i]._id === id ) {
+        orig[i].items.push(new_song);
       }
     }
   }
