@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var find_service_1 = require("./find.service");
 var list_view_service_1 = require("../myList/list-view.service");
 var FindComponent = (function () {
-    function FindComponent(listViewService) {
+    function FindComponent(listViewService, findService) {
         this.listViewService = listViewService;
+        this.findService = findService;
     }
     __decorate([
         core_1.Input(), 
@@ -23,7 +25,7 @@ var FindComponent = (function () {
             selector: "find",
             templateUrl: '../../html/find.html'
         }), 
-        __metadata('design:paramtypes', [list_view_service_1.ListViewService])
+        __metadata('design:paramtypes', [list_view_service_1.ListViewService, find_service_1.FindService])
     ], FindComponent);
     return FindComponent;
 }());

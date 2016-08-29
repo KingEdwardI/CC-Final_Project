@@ -10,5 +10,7 @@ div
         a.nav-link(routerLink="/mylist") My Lists
       <li [class.active]="router.isActive('/', true)" class="nav-item active">
         a.nav-link(routerLink="/find") Discover
+      <li [class.active]="router.isActive('/', true)" class="nav-item active">
+        a.nav-link(routerLink="/saved") Saved Lists
   div
     router-outlet

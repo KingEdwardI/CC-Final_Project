@@ -37,14 +37,13 @@ var ListViewService = (function () {
             id: id,
             item: new_list_item
         })).do(function (res) {
-            console.log(res);
-            this.pushToList(id, this.lists, res);
+            this.pushToList(id, this.lists, res.items[res.items.length - 1]);
         }.bind(this));
     };
     ListViewService.prototype.pushToList = function (id, orig, new_song) {
         for (var i in orig) {
-            if (orig._id === id) {
-                orig[i].item.push(new_song);
+            if (orig[i]._id === id) {
+                orig[i].items.push(new_song);
             }
         }
     };

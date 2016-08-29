@@ -9,12 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var api_service_1 = require("../api.service");
 var SavedListService = (function () {
-    function SavedListService() {
+    function SavedListService(apiService) {
+        this.apiService = apiService;
+        this.saved = [];
+        this.getSavedLists().subscribe();
     }
+    SavedListService.prototype.getSavedLists = function () {
+        return this.apiService.get("/saved")
+            .do(function (res) {
+            this.saved = res;
+        }.bind(this));
+    };
     SavedListService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [api_service_1.ApiService])
     ], SavedListService);
     return SavedListService;
 }());

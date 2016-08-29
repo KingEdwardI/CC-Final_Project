@@ -10,5 +10,7 @@ export class FindComponent {
 
   @Input() lists: Object;
 
-  constructor(private listViewService: ListViewService) {}
+  constructor(private listViewService: ListViewService,
+              private findService: FindService
+             ) {}
 }

@@ -14,7 +14,7 @@ var SavedListComponent = (function () {
     }
     SavedListComponent = __decorate([
         core_1.Component({
-            selector: "savedlist",
+            selector: "saved",
             templateUrl: "../../html/savedlist.html"
         }), 
         __metadata('design:paramtypes', [])

@@ -14,8 +14,16 @@ var FindService = (function () {
     function FindService(apiService) {
         this.apiService = apiService;
         this.lists = [];
+        this.saved = [];
         this.getAllLists().subscribe();
     }
+    FindService.prototype.save = function () {
+        return this.apiService.post("/saved", JSON.stringify({
+            saved: this.lists
+        })).do(function (res) {
+            this.saved.push(res);
+        }.bind(this));
+    };
     FindService.prototype.getAllLists = function () {
         return this.apiService.get("/all")
             .do(function (res) {

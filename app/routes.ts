@@ -25,5 +25,9 @@ export const routes: RouterConfig = [
   {
     path: 'find',
     component: FindComponent
+  },
+  {
+    path: 'saved',
+    component: SavedListComponent
   }
 ];

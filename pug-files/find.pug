@@ -1,8 +1,5 @@
-div.col-md-4
+div.col-md-8
   h3 Lists
   div
-    button((click)="test()")
-      |click
-    <div *ngFor='let obj of listViewService.lists; let k = index'> {{obj.title}} <div *ngFor='let song of obj.items; let i = index'> {{song}} </div> </div>
-
+    <div *ngFor='let obj of listViewService.lists; let k = index'> <h4>{{obj.title}}</h4> <button class='btn btn-default' (click)="save()">Save List</button> <div *ngFor='let item of obj.items; let i = index'> {{item}} </div> </div>
 

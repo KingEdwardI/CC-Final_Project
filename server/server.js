@@ -68,7 +68,7 @@ app.post("/login", function(req,res) {
           status: "success",
           userInfo: data
         });
-    }
+      }
   });
 });
 
@@ -137,6 +137,7 @@ app.post('/create', function(req, res) {
     items: []
   };
 
+
   new ListItemModel(list).save(function(err, data) {
     if (err) {
       res.status(500);
@@ -147,6 +148,29 @@ app.post('/create', function(req, res) {
   });
 });
 
+app.post('/saved', function(req,res) {
+   if (err) {
+      res.status(500);
+      res.send("Error creating list item");
+      return;
+   }
+   res.send(data);
+});
+
+app.get('/saved', function(req,res) {
+   ListItemModel.find(
+    {},
+    function(err, data) {
+      if (err) {
+        res.status(500);
+        res.send("Error getting saved lists");
+        return;
+      }
+      res.send(JSON.stringify(data));
+    }
+  ); 
+});
+
 app.post('/update', function(req, res) {
   var id = req.body.id;
   ListItemModel.findOneAndUpdate(
@@ -155,7 +179,7 @@ app.post('/update', function(req, res) {
     {new : true},
     function(err, data) {
       if (err) {
-          res.statul(500);
+          res.status(500);
           res.send("Error creating list item");
           return;
       }
