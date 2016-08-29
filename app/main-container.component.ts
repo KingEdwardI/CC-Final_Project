@@ -5,7 +5,7 @@ import { LoginService } from "./login/login.service";
 @Component({
   selector: "main-container",
   directives: [ ...ROUTER_DIRECTIVES ],
-  styleUrls: ["/css/main-container.css"],
+  styleUrls: ["../css/main-container.css"],
   templateUrl: '/html/main-container.html'
 })
 

@@ -20,7 +20,7 @@ var MainContainer = (function () {
         core_1.Component({
             selector: "main-container",
             directives: router_1.ROUTER_DIRECTIVES.slice(),
-            styleUrls: ["/css/main-container.css"],
+            styleUrls: ["../css/main-container.css"],
             templateUrl: '/html/main-container.html'
         }), 
         __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
