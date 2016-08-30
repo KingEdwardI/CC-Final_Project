@@ -45,7 +45,8 @@ var MyListComponent = (function () {
         core_1.Component({
             selector: "mylist",
             directives: common_1.FORM_DIRECTIVES.concat([listView_component_1.ListViewComponent]),
-            templateUrl: "../../html/mylist.html"
+            templateUrl: "../../html/mylist.html",
+            styleUrls: ["app/css/mylist.css"]
         }), 
         __metadata('design:paramtypes', [list_view_service_1.ListViewService])
     ], MyListComponent);

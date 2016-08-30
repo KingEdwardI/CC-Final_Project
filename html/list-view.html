@@ -1,3 +1,9 @@
-<div class="col-md-12"><label> {{list.title | json}} </label>
-<input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item"/>
-<p> {{new_list_item}} </p><button class="btn btn-default" (click)="addToList()">Add to list</button><br/><list-item *ngFor='let item of list.items; let i = index' [item]='item'></list-item></div>
+<div class="lists">
+  <label> {{list.title | json}} </label>
+  <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item"/>
+  <p> {{new_list_item}} </p>
+  <button class="btn btn-default" (click)="addToList()">Add to list</button>
+</div>
+<br/>
+<list-item *ngFor='let item of list.items; let i = index' [item]='item'>
+</list-item>

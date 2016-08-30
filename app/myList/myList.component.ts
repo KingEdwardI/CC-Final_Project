@@ -6,7 +6,8 @@ import { ListViewService } from "./list-view.service";
 @Component ({
   selector: "mylist",
   directives: [ ...FORM_DIRECTIVES, ListViewComponent ],
-  templateUrl: "../../html/mylist.html"
+  templateUrl: "../../html/mylist.html",
+  styleUrls: ["app/css/mylist.css"]
 })
 export class MyListComponent {
 

@@ -1,1 +1,8 @@
-<div><div *ngFor='let obj of savedListService; let i = index'> <h4>{{obj.title}}</h4> <div *ngFor='let item of obj.items; let i = index'> {{item}}</div></div></div>
+<div>
+  <div *ngFor='let obj of savedListService; let i = index'> 
+    <h4>{{obj.title}}</h4> 
+    <div *ngFor='let item of obj.items; let i = index'> 
+      {{item}}
+    </div>
+  </div>
+</div>

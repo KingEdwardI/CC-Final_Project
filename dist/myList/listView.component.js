@@ -33,7 +33,8 @@ var ListViewComponent = (function () {
     ListViewComponent = __decorate([
         core_1.Component({
             selector: 'list-view',
-            templateUrl: "../../html/list-view.html"
+            templateUrl: "../../html/list-view.html",
+            styleUrls: ["app/css/list-view.css"]
         }), 
         __metadata('design:paramtypes', [list_view_service_1.ListViewService])
     ], ListViewComponent);

@@ -1,0 +1,9 @@
+.title{
+  width: 150px;
+  height: 100%;
+  background-color: red;
+  float: left;
+}
+list-view {
+  float: left;
+}
