@@ -1,7 +1,7 @@
 <div class="lists">
   <label> {{list.title | json}} </label>
   <br/>
-  <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item"/>
+  <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item" (keyup.enter)='addToList()'/>
   <button class="btn btn-default" (click)="addToList()">Add to list</button>
 </div>
 <br/>

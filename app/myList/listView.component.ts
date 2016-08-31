@@ -24,6 +24,6 @@ export class ListViewComponent {
     .subscribe(function(res){
       console.log(res);
     });
-
+    
   }
 }

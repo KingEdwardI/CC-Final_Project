@@ -13,7 +13,6 @@ var api_service_1 = require("../api.service");
 var ListViewService = (function () {
     function ListViewService(apiService) {
         this.apiService = apiService;
-        this.lists = [];
         this.userList = [];
         // this.getAllLists().subscribe();
         this.getUserList().subscribe();
@@ -33,7 +32,7 @@ var ListViewService = (function () {
                 items: []
             }
         })).do(function (res) {
-            this.lists.push(res);
+            this.userList.push(res);
         }.bind(this));
     };
     ListViewService.prototype.addToList = function (id, new_list_item) {
@@ -41,7 +40,7 @@ var ListViewService = (function () {
             id: id,
             item: new_list_item
         })).do(function (res) {
-            this.pushToList(id, this.lists, res.items[res.items.length - 1]);
+            this.pushToList(id, this.userList, res.items[res.items.length - 1]);
         }.bind(this));
     };
     ListViewService.prototype.getUserList = function () {

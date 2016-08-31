@@ -175,7 +175,7 @@ app.post('/saved', function(req,res) {
       var listData = data.items;
       UserModel.findOneAndUpdate(
         { _id: req.session.userId },
-        { $addToSet: { savedList : listData } },
+        { $addToSet: { savedList : { $each : listData } } },
         { new : true },
         function(err,data){
           if(err){

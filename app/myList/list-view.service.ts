@@ -3,7 +3,6 @@ import { ApiService } from "../api.service";
 
 @Injectable()
 export class ListViewService {
-  lists = [];
   userList =[];
 
   constructor(private apiService: ApiService) {
@@ -27,7 +26,7 @@ export class ListViewService {
         items: []
       }
     })).do(function(res) {
-      this.lists.push(res);
+      this.userList.push(res);
     }.bind(this));
   }
 
@@ -36,7 +35,7 @@ export class ListViewService {
       id: id,
       item: new_list_item
     })).do(function(res) {
-      this.pushToList(id, this.lists, res.items[res.items.length - 1]);
+      this.pushToList(id, this.userList, res.items[res.items.length - 1]);
     }.bind(this));
   }
 

@@ -19,10 +19,7 @@ export class MyListComponent {
 
   @Output() onUpdate = new EventEmitter();
   @Output() onDelete = new EventEmitter();
-  
-  ngOnInit(){
-    this.listViewService.getUserList();
-  }
+
   onDeleteClick() {
     this.onDelete.emit();
   }
