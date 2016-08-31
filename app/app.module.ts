@@ -14,8 +14,6 @@ import { SavedListComponent } from "./savedList/savedList.component";
 import { SavedListService } from "./savedList/savedList.service";
 import { SettingsComponent } from "./settings/settings.component";
 import { SettingsService } from "./settings/settings.service";
-import { SoundcloudComponent } from "./soundcloud/soundcloud.component";
-import { SoundcloudService } from "./soundcloud/soundcloud.service";
 import { SplashPage } from "./splash.component";
 import { ApiService } from "./api.service";
 import { ListViewService } from "./myList/list-view.service";
@@ -34,7 +32,6 @@ import { ListItemComponent } from "./myList/listItem.component";
       MyListComponent,
       SavedListComponent,
       SettingsComponent,
-      SoundcloudComponent,
       ListViewComponent,
       ListItemComponent,
       SplashPage
@@ -45,7 +42,6 @@ import { ListItemComponent } from "./myList/listItem.component";
       LoginService,
       SavedListService,
       SettingsService,
-      SoundcloudService,
       ...HTTP_PROVIDERS,
       provideRouter(routes),
       ListViewService,

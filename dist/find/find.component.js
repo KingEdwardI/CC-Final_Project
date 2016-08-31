@@ -16,10 +16,17 @@ var FindComponent = (function () {
         this.listViewService = listViewService;
         this.findService = findService;
     }
+    FindComponent.prototype.saveList = function () {
+        this.findService
+            .saveList(this.listViewService.lists[0])
+            .subscribe(function (res) {
+            console.log(res);
+        }.bind(this));
+    };
     __decorate([
-        core_1.Input(), 
+        core_1.Input('item'), 
         __metadata('design:type', Object)
-    ], FindComponent.prototype, "lists", void 0);
+    ], FindComponent.prototype, "obj", void 0);
     FindComponent = __decorate([
         core_1.Component({
             selector: "find",

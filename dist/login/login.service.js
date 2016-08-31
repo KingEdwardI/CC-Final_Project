@@ -36,6 +36,12 @@ var LoginService = (function () {
             console.log(res);
         });
     };
+    LoginService.prototype.editUser = function (user) {
+        return this.apiService.post("/edit-user", JSON.stringify(user))
+            .do(function (response) {
+            this.user = response;
+        }.bind(this));
+    };
     LoginService.prototype.canActivate = function () {
         if (!this.authenticated) {
             this.router.navigate(['login']);

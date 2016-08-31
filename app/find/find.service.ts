@@ -10,10 +10,10 @@ export class FindService {
     this.getAllLists().subscribe();
   }
 
-  save() {
-    return this.apiService.post("/saved", JSON.stringify({
-      saved: this.lists
-    })).do(function(res) {
+  saveList(list) {
+    console.log('im here!', list)
+    return this.apiService.post("/saved",list)
+    .do(function(res) {
       this.saved.push(res);
     }.bind(this));
   }
@@ -21,9 +21,8 @@ export class FindService {
   getAllLists() {
     return this.apiService.get("/all")
     .do(function(res) {
-      this.lists = res;
+      this.lists = res
     }.bind(this));
   }
-
 
 }

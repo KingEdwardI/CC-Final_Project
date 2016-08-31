@@ -39,13 +39,19 @@ var ApiService = (function () {
         }
     };
     ApiService.prototype.get = function (path) {
-        return this.http.get(this.url + path, { headers: this.getHeaders })
+        return this.http.get(this.url + path, {
+            headers: this.getHeaders,
+            withCredentials: true
+        })
             .map(this.checkForError)
             .catch(function (err) { return Observable_1.Observable.throw(err); })
             .map(this.getJSON);
     };
     ApiService.prototype.post = function (path, body) {
-        return this.http.post(this.url + path, body, { headers: this.postHeaders })
+        return this.http.post(this.url + path, body, {
+            headers: this.postHeaders,
+            withCredentials: true
+        })
             .map(this.checkForError)
             .catch(function (err) { return Observable_1.Observable.throw(err); })
             .map(this.getJSON);

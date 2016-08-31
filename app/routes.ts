@@ -6,7 +6,6 @@ import { LoginComponent } from "./login/login.component";
 import { MyListComponent } from "./myList/myList.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { SavedListComponent } from "./savedList/savedList.component";
-import { SoundcloudComponent } from "./soundcloud/soundcloud.component";
 import { LoginService } from "./login/login.service";
 
 export const routes: RouterConfig = [
@@ -20,14 +19,22 @@ export const routes: RouterConfig = [
   },
   {
     path: 'mylist',
-    component: MyListComponent
+    component: MyListComponent,
+    canActivate: [LoginService]
   },
   {
     path: 'find',
-    component: FindComponent
+    component: FindComponent,
+    canActivate: [LoginService]
   },
   {
     path: 'saved',
-    component: SavedListComponent
+    component: SavedListComponent,
+    canActivate: [LoginService]
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [LoginService]
   }
 ];

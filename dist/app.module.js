@@ -24,8 +24,6 @@ var savedList_component_1 = require("./savedList/savedList.component");
 var savedList_service_1 = require("./savedList/savedList.service");
 var settings_component_1 = require("./settings/settings.component");
 var settings_service_1 = require("./settings/settings.service");
-var soundcloud_component_1 = require("./soundcloud/soundcloud.component");
-var soundcloud_service_1 = require("./soundcloud/soundcloud.service");
 var splash_component_1 = require("./splash.component");
 var api_service_1 = require("./api.service");
 var list_view_service_1 = require("./myList/list-view.service");
@@ -44,7 +42,6 @@ var AppModule = (function () {
                 myList_component_1.MyListComponent,
                 savedList_component_1.SavedListComponent,
                 settings_component_1.SettingsComponent,
-                soundcloud_component_1.SoundcloudComponent,
                 listView_component_1.ListViewComponent,
                 listItem_component_1.ListItemComponent,
                 splash_component_1.SplashPage
@@ -54,8 +51,7 @@ var AppModule = (function () {
                 find_service_1.FindService,
                 login_service_1.LoginService,
                 savedList_service_1.SavedListService,
-                settings_service_1.SettingsService,
-                soundcloud_service_1.SoundcloudService
+                settings_service_1.SettingsService
             ].concat(http_1.HTTP_PROVIDERS, [
                 router_1.provideRouter(routes_1.routes),
                 list_view_service_1.ListViewService,

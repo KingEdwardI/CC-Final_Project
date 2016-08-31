@@ -34,12 +34,18 @@ export class LoginService {
     });
   }
 
+  editUser(user) {
+    return this.apiService.post("/edit-user", JSON.stringify(user))
+    .do(function(response) {
+      this.user = response;
+    }.bind(this));
+  }
+
   canActivate(): boolean {
     if (!this.authenticated) {
       this.router.navigate(['login']);
     }
     return this.authenticated;
   }
-
 
 }

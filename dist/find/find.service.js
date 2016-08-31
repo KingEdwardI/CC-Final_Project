@@ -17,10 +17,10 @@ var FindService = (function () {
         this.saved = [];
         this.getAllLists().subscribe();
     }
-    FindService.prototype.save = function () {
-        return this.apiService.post("/saved", JSON.stringify({
-            saved: this.lists
-        })).do(function (res) {
+    FindService.prototype.saveList = function (list) {
+        console.log('im here!', list);
+        return this.apiService.post("/saved", list)
+            .do(function (res) {
             this.saved.push(res);
         }.bind(this));
     };

@@ -4,4 +4,6 @@ import { Component } from "@angular/core";
   selector: "settings",
   templateUrl: "../../html/settings.html"
 })
-export class SettingsComponent {}
+export class SettingsComponent {
+  
+}

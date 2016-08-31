@@ -8,9 +8,18 @@ import { ListViewService } from "../myList/list-view.service";
 })
 export class FindComponent {
 
-  @Input() lists: Object;
+  @Input('item') obj;
 
   constructor(private listViewService: ListViewService,
               private findService: FindService
              ) {}
+
+  saveList() {
+    this.findService
+    .saveList(this.listViewService.lists[0])
+    .subscribe(function(res){
+      console.log(res);
+    }.bind(this));
+
+  }
 }

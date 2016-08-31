@@ -4,3 +4,4 @@ node_modules
 pre
 .DS_Store
 dist
+typings

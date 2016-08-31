@@ -3,6 +3,7 @@
   height: 100%;
   background-color: red;
   float: left;
+  z-index: -1;
 }
 list-view {
   float: left;

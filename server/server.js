@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var cors = require('cors');
 var mongoose = require('mongoose');
-var cookieParser = require('cookie-parser');
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
 
@@ -15,37 +14,23 @@ var ListItemModel = require("./list.model")(mongoose);
 var app = express();
 
 app.use(bodyParser.json());
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true}));
-app.use(cors());
 app.use(expressSession({
   secret: "g.o.a.t",
   resave: false,
   saveUninitialized: false
 }));
 
-//app.use('/api', expressJwt({secret: secret}));
+app.use(cors({
+  credentials: true,
+  origin: true
+}));
 
 app.use(function(req,res,next) {
   console.log(req.url);
   next();
 });
-
-/*app.post("/authenticate", function(req, res) {
-// authenticate user
-// set profile
-// send the profile inside the token
-var token = jwt.sign(profile, secret, { expiresInMintes: 60*5 });
-
-res.json({ token: token});
-});*/
-
-/*app.get("/api/restricted", function (req, res) {
-  res.json({
-    name: "foo"
-  });
-});*/
 
 app.post("/login", function(req,res) {
   UserModel.findOne({
@@ -103,7 +88,7 @@ app.post("/signup", function(req, res) {
           res.send("Error creating user");
           return;
         }
-        req.session.userId = data._id;
+        req.session.userId = 'ObjectId("'+data._id+'")';
         req.session.save();
         res.send({
           status: "success",
@@ -148,27 +133,45 @@ app.post('/create', function(req, res) {
   });
 });
 
+/*
+ * app.post('/saved', function(req,res) {
+ *   listItemModel.find(
+ *   )
+ *    if (err) {
+ *       res.status(500);
+ *       res.send("Error creating list item");
+ *       return;
+ *    }
+ *    res.send(JSON.stringify(data));
+ * });
+ */
 app.post('/saved', function(req,res) {
-   if (err) {
-      res.status(500);
-      res.send("Error creating list item");
-      return;
-   }
-   res.send(data);
-});
-
-app.get('/saved', function(req,res) {
-   ListItemModel.find(
-    {},
+   ListItemModel.findOne(
+    { _id: req.body._id },
     function(err, data) {
       if (err) {
         res.status(500);
         res.send("Error getting saved lists");
         return;
       }
-      res.send(JSON.stringify(data));
-    }
-  ); 
+      var listData = data.items;
+      console.log("message", 'ObjectId("'+ req.session.userId +'")')
+      console.log("ld",listData)
+      UserModel.findOneAndUpdate(
+        { _id: req.session.userId },
+        { $pushAll: { savedList : listData } },
+        { new : true },
+        function(err,data){
+          if(err){
+            console.log(err);
+            return;
+          }
+          console.log(data);
+        }
+        );
+        }
+      );
+
 });
 
 app.post('/update', function(req, res) {
@@ -187,6 +190,17 @@ app.post('/update', function(req, res) {
     }
   );
 });
+
+/*
+ * app.get('/matches', function(req,res){
+ *   listitems.aggregate([
+ *  // filter? out lists with the currentUserId
+ *     { $unwind: "$items" }, // take items out of all lists
+ *     { $group: { _id: null, itms: { $push: "$items" } } }, //create a new id and push all items arrays to the itms object array 
+ *     { $project: { _id: 0, items: "$itms" } } // set _id to 0 and create the items array object from the itms object array 
+ *   ])
+ * })
+ */
 
 app.use(function(req, res, next) {
   res.status(404);
