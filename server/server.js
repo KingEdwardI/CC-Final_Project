@@ -59,6 +59,7 @@ app.post("/login", function(req,res) {
 
 app.post("/logout", function(req,res){
   req.session.destroy();
+  req.session = null;
   res.send({status: "success"});
 });
 
@@ -88,7 +89,7 @@ app.post("/signup", function(req, res) {
           res.send("Error creating user");
           return;
         }
-        req.session.userId = 'ObjectId("'+data._id+'")';
+        req.session.userId = data._id;
         req.session.save();
         res.send({
           status: "success",
@@ -101,7 +102,7 @@ app.post("/signup", function(req, res) {
 
 app.get('/all', function(req,res) {
   ListItemModel.find(
-    {},
+    { userId: { $ne : req.session.userId } },
     function(err, data) {
       if (err) {
         res.status(500);
@@ -113,9 +114,24 @@ app.get('/all', function(req,res) {
   );
 });
 
+app.get('/all_my_lists', function(req,res){
+  ListItemModel.find(
+    { userId : req.session.userId },
+    function(err, data) {
+      if (err) {
+        res.status(500);
+        res.send("Error getting all lists");
+        return;
+      }
+      console.log(data);
+      res.send(JSON.stringify(data));
+    }
+  );
+});
+
 app.post('/create', function(req, res) {
-  console.log(req.session.userId);
   var list = {
+    username: req.body.username,
     userId: req.session.userId,
     index: req.body.list.id,
     title: req.body.list.title || "",
@@ -133,18 +149,20 @@ app.post('/create', function(req, res) {
   });
 });
 
-/*
- * app.post('/saved', function(req,res) {
- *   listItemModel.find(
- *   )
- *    if (err) {
- *       res.status(500);
- *       res.send("Error creating list item");
- *       return;
- *    }
- *    res.send(JSON.stringify(data));
- * });
- */
+app.get('/saved', function(req,res) {
+  UserModel.findOne( 
+    { _id: req.session.userId },
+    function(err, data){
+      if (err) {
+        res.status(500);
+        res.send("Error getting saved lists");
+        return;
+      }
+      res.send(JSON.stringify(data));
+    });
+});
+
+
 app.post('/saved', function(req,res) {
    ListItemModel.findOne(
     { _id: req.body._id },
@@ -155,11 +173,9 @@ app.post('/saved', function(req,res) {
         return;
       }
       var listData = data.items;
-      console.log("message", 'ObjectId("'+ req.session.userId +'")')
-      console.log("ld",listData)
       UserModel.findOneAndUpdate(
         { _id: req.session.userId },
-        { $pushAll: { savedList : listData } },
+        { $addToSet: { savedList : listData } },
         { new : true },
         function(err,data){
           if(err){
@@ -167,11 +183,8 @@ app.post('/saved', function(req,res) {
             return;
           }
           console.log(data);
-        }
-        );
-        }
-      );
-
+        });
+    });
 });
 
 app.post('/update', function(req, res) {

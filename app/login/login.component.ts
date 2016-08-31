@@ -51,7 +51,6 @@ export class LoginComponent {
     .authenticate(this.mode, this.loginInfo)
     .subscribe(function(res) {
       console.log(res);
-    });
+    }.bind(this));
   }
-
 } 

@@ -1,9 +1,9 @@
 <div class="col-md-8">
   <h3>Lists</h3>
   <div>
-    <div *ngFor='let obj of listViewService.lists; let k = index' > 
-      <h4>{{obj.title}}</h4> 
-      <button class='btn btn-default' (click)="saveList()"> 
+    <div *ngFor='let obj of findService.lists; let k = index'> 
+      <h4>{{ obj.title }} from {{ obj.username }}</h4> 
+      <button class='btn btn-default' (click)="saveList(k)"> 
         Save List 
       </button> 
       <div *ngFor='let item of obj.items; let i = index'>

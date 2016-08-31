@@ -19,6 +19,9 @@ var MyListComponent = (function () {
         this.onUpdate = new core_1.EventEmitter();
         this.onDelete = new core_1.EventEmitter();
     }
+    MyListComponent.prototype.ngOnInit = function () {
+        this.listViewService.getUserList();
+    };
     MyListComponent.prototype.onDeleteClick = function () {
         this.onDelete.emit();
     };

@@ -8,12 +8,13 @@ constructor(private apiService: ApiService) {
   this.getSavedLists().subscribe();
 }
 
-saved = [];
+saved;
 
   getSavedLists() {
     return this.apiService.get("/saved")
     .do(function(res) {
-      this.saved = res;
+      this.saved = res.savedList;
     }.bind(this));
   }
+
 }

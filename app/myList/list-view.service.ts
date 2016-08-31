@@ -4,17 +4,21 @@ import { ApiService } from "../api.service";
 @Injectable()
 export class ListViewService {
   lists = [];
+  userList =[];
 
   constructor(private apiService: ApiService) {
-    this.getAllLists().subscribe();
+    // this.getAllLists().subscribe();
+    this.getUserList().subscribe();
   }
 
-  getAllLists() {
-    return this.apiService.get("/all")
-    .do(function(res) {
-      this.lists = res;
-    }.bind(this));
-  }
+  /*
+   * getAllLists() {
+   *   return this.apiService.get("/all")
+   *   .do(function(res) {
+   *     this.lists = res;
+   *   }.bind(this));
+   * }
+   */
 
   createList(list_title) {
     return this.apiService.post("/create", JSON.stringify({
@@ -33,6 +37,13 @@ export class ListViewService {
       item: new_list_item
     })).do(function(res) {
       this.pushToList(id, this.lists, res.items[res.items.length - 1]);
+    }.bind(this));
+  }
+
+  getUserList() {
+    return this.apiService.get("/all_my_lists")
+    .do(function(res) {
+      this.userList = res;
     }.bind(this));
   }
 

@@ -3,4 +3,4 @@
   <p> {{list_title}} </p>
   <button class="btn btn-default" (click)="createList()">Create New</button>
 </div>
-<list-view *ngFor='let list of listViewService.lists; let i = index' [list]='list'></list-view>
+<list-view *ngFor='let list of listViewService.userList; let i = index' [list]='list'></list-view>

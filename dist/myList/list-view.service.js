@@ -14,14 +14,18 @@ var ListViewService = (function () {
     function ListViewService(apiService) {
         this.apiService = apiService;
         this.lists = [];
-        this.getAllLists().subscribe();
+        this.userList = [];
+        // this.getAllLists().subscribe();
+        this.getUserList().subscribe();
     }
-    ListViewService.prototype.getAllLists = function () {
-        return this.apiService.get("/all")
-            .do(function (res) {
-            this.lists = res;
-        }.bind(this));
-    };
+    /*
+     * getAllLists() {
+     *   return this.apiService.get("/all")
+     *   .do(function(res) {
+     *     this.lists = res;
+     *   }.bind(this));
+     * }
+     */
     ListViewService.prototype.createList = function (list_title) {
         return this.apiService.post("/create", JSON.stringify({
             list: {
@@ -38,6 +42,12 @@ var ListViewService = (function () {
             item: new_list_item
         })).do(function (res) {
             this.pushToList(id, this.lists, res.items[res.items.length - 1]);
+        }.bind(this));
+    };
+    ListViewService.prototype.getUserList = function () {
+        return this.apiService.get("/all_my_lists")
+            .do(function (res) {
+            this.userList = res;
         }.bind(this));
     };
     ListViewService.prototype.pushToList = function (id, orig, new_song) {

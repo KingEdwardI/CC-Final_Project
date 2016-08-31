@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var savedList_service_1 = require("./savedList.service");
 var SavedListComponent = (function () {
-    function SavedListComponent() {
+    function SavedListComponent(savedListService) {
+        this.savedListService = savedListService;
     }
     SavedListComponent = __decorate([
         core_1.Component({
             selector: "saved",
             templateUrl: "../../html/savedlist.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [savedList_service_1.SavedListService])
     ], SavedListComponent);
     return SavedListComponent;
 }());

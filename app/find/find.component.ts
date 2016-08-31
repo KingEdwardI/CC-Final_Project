@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChange } from "@angular/core";
 import { FindService } from "./find.service";
 import { ListViewService } from "../myList/list-view.service";
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: "find",
@@ -8,15 +9,11 @@ import { ListViewService } from "../myList/list-view.service";
 })
 export class FindComponent {
 
-  @Input('item') obj;
+  constructor( private findService: FindService ) {}
 
-  constructor(private listViewService: ListViewService,
-              private findService: FindService
-             ) {}
-
-  saveList() {
+  saveList(index) {
     this.findService
-    .saveList(this.listViewService.lists[0])
+    .saveList(this.findService.lists[index])
     .subscribe(function(res){
       console.log(res);
     }.bind(this));

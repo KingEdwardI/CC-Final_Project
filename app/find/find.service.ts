@@ -11,7 +11,7 @@ export class FindService {
   }
 
   saveList(list) {
-    console.log('im here!', list)
+    console.log('im here!', list);
     return this.apiService.post("/saved",list)
     .do(function(res) {
       this.saved.push(res);

@@ -50,7 +50,7 @@ var LoginComponent = (function () {
             .authenticate(this.mode, this.loginInfo)
             .subscribe(function (res) {
             console.log(res);
-        });
+        }.bind(this));
     };
     LoginComponent = __decorate([
         core_1.Component({

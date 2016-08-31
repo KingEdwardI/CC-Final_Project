@@ -10,29 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var find_service_1 = require("./find.service");
-var list_view_service_1 = require("../myList/list-view.service");
 var FindComponent = (function () {
-    function FindComponent(listViewService, findService) {
-        this.listViewService = listViewService;
+    function FindComponent(findService) {
         this.findService = findService;
     }
-    FindComponent.prototype.saveList = function () {
+    FindComponent.prototype.saveList = function (index) {
         this.findService
-            .saveList(this.listViewService.lists[0])
+            .saveList(this.findService.lists[index])
             .subscribe(function (res) {
             console.log(res);
         }.bind(this));
     };
-    __decorate([
-        core_1.Input('item'), 
-        __metadata('design:type', Object)
-    ], FindComponent.prototype, "obj", void 0);
     FindComponent = __decorate([
         core_1.Component({
             selector: "find",
             templateUrl: '../../html/find.html'
         }), 
-        __metadata('design:paramtypes', [list_view_service_1.ListViewService, find_service_1.FindService])
+        __metadata('design:paramtypes', [find_service_1.FindService])
     ], FindComponent);
     return FindComponent;
 }());
