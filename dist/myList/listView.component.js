@@ -13,6 +13,7 @@ var list_view_service_1 = require("./list-view.service");
 var ListViewComponent = (function () {
     function ListViewComponent(listViewService) {
         this.listViewService = listViewService;
+        this.filteredList = [];
         this.new_list_item = '';
     }
     ListViewComponent.prototype.deleteList = function () {
@@ -27,14 +28,25 @@ var ListViewComponent = (function () {
             console.log(res);
         });
     };
+    ListViewComponent.prototype.filter = function () {
+        this.listViewService.autoComplete().subscribe();
+        if (this.new_list_item !== "") {
+            this.filteredList = this.listViewService.artists.filter(function (el) {
+                return el.toLowerCase().indexOf(this.new_list_item.toLowerCase()) > -1;
+            }.bind(this));
+        }
+        else {
+            this.filteredList = [];
+        }
+    };
+    ListViewComponent.prototype.select = function (item) {
+        this.new_list_item = item;
+        this.filteredList = [];
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], ListViewComponent.prototype, "list", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ListViewComponent.prototype, "newListItem", void 0);
     ListViewComponent = __decorate([
         core_1.Component({
             selector: 'list-view',

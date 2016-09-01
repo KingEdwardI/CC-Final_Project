@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
 import { ApiService } from "../api.service";
 import { ListViewService } from "../myList/list-view.service";
+import { SavedListService } from "../savedList/savedList.service";
 
 @Injectable ()
 export class LoginService {
@@ -12,7 +13,8 @@ export class LoginService {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private listViewService: ListViewService
+    private listViewService: ListViewService,
+    private savedListService: SavedListService
   ) {}
   
   authenticate(path: string, creds: Object) {
@@ -22,6 +24,7 @@ export class LoginService {
         this.authenticated = true;
         this.user = response.userInfo;
         this.listViewService.loadUserLists();
+        this.savedListService.loadSavedLists();
       }
     this.router.navigate(['/mylist']);
     }.bind(this));
@@ -34,6 +37,7 @@ export class LoginService {
     this.apiService.post('/logout', "")
     .subscribe(function(res){
       this.listViewService.lists = [];
+      this.savedListService.savedLists = [];
       console.log(res);
     }.bind(this));
   }

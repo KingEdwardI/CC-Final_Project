@@ -224,13 +224,13 @@ app.post("/delete_list", function(req, res) {
             res.send("Error getting all Lists");
             return;
           }
-          return JSON.stringify(data);
+          res.send(JSON.stringify(data));
         });
     });
 });
 
 app.get('/artist_array', function(req, res) {
-  res.sendfile(__dirname+"/server/artist2.txt");
+  res.sendFile(__dirname+"/artist2.txt");
 });
 
 app.use(function(req, res, next) {

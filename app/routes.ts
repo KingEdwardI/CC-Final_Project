@@ -25,6 +25,7 @@ export const routes: RouterConfig = [
   {
     path: 'find',
     component: FindComponent,
+    canActivate: [LoginService]
   },
   {
     path: 'saved',

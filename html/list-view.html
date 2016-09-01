@@ -2,7 +2,15 @@
   <button class="uk-button uk-button-danger uk-button-mini" (click)="deleteList()"> remove </button>
   <h4 class="uk-panel-title"> {{list.title | json}} </h4>
   <br/>
-  <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item" (keyup.enter)='addToList()'/>
+  <div class="input-field">
+    <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item" (keyup)='filter()' (keyup.enter)='addToList()'/>
+  </div>
+  <div class="suggestions" *ngIf="filteredList.length > 0">
+    <ul>
+      <li *ngFor="let item of filteredList" >
+        <a (click)="select(item)"> {{item}} </a>
+      </li>
+    </ul>
   <button class="uk-button" (click)="addToList()">Add to list</button>
 <br/>
 <ul class="uk-list uk-list-line">

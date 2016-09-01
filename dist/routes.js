@@ -22,6 +22,7 @@ exports.routes = [
     {
         path: 'find',
         component: find_component_1.FindComponent,
+        canActivate: [login_service_1.LoginService]
     },
     {
         path: 'saved',

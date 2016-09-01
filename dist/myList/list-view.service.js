@@ -14,6 +14,7 @@ var ListViewService = (function () {
     function ListViewService(apiService) {
         this.apiService = apiService;
         this.userList = [];
+        this.artists = [];
     }
     ListViewService.prototype.loadUserLists = function () {
         this.getUserList().subscribe();
@@ -52,7 +53,15 @@ var ListViewService = (function () {
     ListViewService.prototype.deleteList = function (list_id) {
         return this.apiService.post("/delete_list", JSON.stringify({
             id: list_id
-        })).do(function (res) { }.bind(this));
+        })).do(function (res) {
+            // this.userList.splice(i, 1);
+        }.bind(this));
+    };
+    ListViewService.prototype.autoComplete = function () {
+        return this.apiService.get("/artist_array").do(function (res) {
+            this.artists = res;
+            console.log(res);
+        }.bind(this));
     };
     ListViewService = __decorate([
         core_1.Injectable(), 

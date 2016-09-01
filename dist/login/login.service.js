@@ -12,11 +12,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var api_service_1 = require("../api.service");
 var list_view_service_1 = require("../myList/list-view.service");
+var savedList_service_1 = require("../savedList/savedList.service");
 var LoginService = (function () {
-    function LoginService(router, apiService, listViewService) {
+    function LoginService(router, apiService, listViewService, savedListService) {
         this.router = router;
         this.apiService = apiService;
         this.listViewService = listViewService;
+        this.savedListService = savedListService;
         this.authenticated = false;
     }
     LoginService.prototype.authenticate = function (path, creds) {
@@ -26,6 +28,7 @@ var LoginService = (function () {
                 this.authenticated = true;
                 this.user = response.userInfo;
                 this.listViewService.loadUserLists();
+                this.savedListService.loadSavedLists();
             }
             this.router.navigate(['/mylist']);
         }.bind(this));
@@ -37,6 +40,7 @@ var LoginService = (function () {
         this.apiService.post('/logout', "")
             .subscribe(function (res) {
             this.listViewService.lists = [];
+            this.savedListService.savedLists = [];
             console.log(res);
         }.bind(this));
     };
@@ -54,7 +58,7 @@ var LoginService = (function () {
     };
     LoginService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [router_1.Router, api_service_1.ApiService, list_view_service_1.ListViewService])
+        __metadata('design:paramtypes', [router_1.Router, api_service_1.ApiService, list_view_service_1.ListViewService, savedList_service_1.SavedListService])
     ], LoginService);
     return LoginService;
 }());

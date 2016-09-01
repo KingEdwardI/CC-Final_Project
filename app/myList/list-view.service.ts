@@ -3,7 +3,8 @@ import { ApiService } from "../api.service";
 
 @Injectable()
 export class ListViewService {
-  userList =[];
+  userList = [];
+  artists = [];
 
   constructor(private apiService: ApiService) {
   }
@@ -11,6 +12,7 @@ export class ListViewService {
   loadUserLists() {
     this.getUserList().subscribe();
   }
+
   createList(list_title) {
     return this.apiService.post("/create", JSON.stringify({
       list: {
@@ -50,16 +52,18 @@ export class ListViewService {
     deleteList(list_id){
       return this.apiService.post("/delete_list", JSON.stringify({
         id: list_id
-      })).do(function(res) {}.bind(this)); 
+      })).do(function(res) {
+        // this.userList.splice(i, 1);
+      }.bind(this)); 
     }
  
-    /*
-     * autoComplete() {
-     *   return this.apiService.get("/artist_array", function(req,res) {
-     *     console.log('autoComplete response', res)
-     *   });
-     * }
-     */
+    autoComplete() {
+      return this.apiService.get("/artist_array").do(function(res) {
+        this.artists = res;
+        console.log(res)
+      }.bind(this));
+    }
+
  /* 
  *   deleteItem(list, index) {
  *     return this.apiService.post("/delete_list", JSON.stringify({

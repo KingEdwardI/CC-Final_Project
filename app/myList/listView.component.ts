@@ -10,6 +10,7 @@ import { ListViewService } from "./list-view.service";
 
 export class ListViewComponent {
 
+  filteredList = [];
 
   constructor(private listViewService: ListViewService) {}
 
@@ -22,7 +23,6 @@ export class ListViewComponent {
   }
 
   new_list_item = '';
-  @Input() newListItem;
 
   addToList() {
     this.listViewService
@@ -30,6 +30,21 @@ export class ListViewComponent {
     .subscribe(function(res){
       console.log(res);
     });
-    
   }
+
+  filter() {
+    this.listViewService.autoComplete().subscribe();
+    if (this.new_list_item !== "") {
+      this.filteredList = this.listViewService.artists.filter(function(el){
+        return el.toLowerCase().indexOf(this.new_list_item.toLowerCase()) > -1;
+      }.bind(this));
+    } else {
+        this.filteredList = [];
+    }
+  }
+  select(item){
+    this.new_list_item = item;
+    this.filteredList = [];
+  }
+
 }
