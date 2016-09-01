@@ -15,9 +15,10 @@ export class ListViewComponent {
 
   @Input() list;
 
-  deleteItem(index){
+  deleteList(){
     this.listViewService
-    .removeFromList(index, this.list._id)
+    .deleteList(this.list._id).subscribe(function(res){
+    });
   }
 
   new_list_item = '';

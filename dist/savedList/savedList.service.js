@@ -13,12 +13,16 @@ var api_service_1 = require("../api.service");
 var SavedListService = (function () {
     function SavedListService(apiService) {
         this.apiService = apiService;
+        this.saved = [];
         this.getSavedLists().subscribe();
     }
     SavedListService.prototype.getSavedLists = function () {
         return this.apiService.get("/saved")
             .do(function (res) {
-            this.saved = res.savedList;
+            for (var i = 0; i < res.savedList.length; i++) {
+                this.saved.push(res.savedList[i]);
+            }
+            console.log(res.savedList);
         }.bind(this));
     };
     SavedListService = __decorate([

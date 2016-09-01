@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
 import { ApiService } from "../api.service";
+import { ListViewService } from "../myList/list-view.service";
 
 @Injectable ()
 export class LoginService {
@@ -10,7 +11,8 @@ export class LoginService {
 
   constructor(
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private listViewService: ListViewService
   ) {}
   
   authenticate(path: string, creds: Object) {
@@ -19,6 +21,7 @@ export class LoginService {
       if (response.status === "success") {
         this.authenticated = true;
         this.user = response.userInfo;
+        this.listViewService.loadUserLists();
       }
     this.router.navigate(['/mylist']);
     }.bind(this));
@@ -30,8 +33,9 @@ export class LoginService {
     this.router.navigate(['login']);
     this.apiService.post('/logout', "")
     .subscribe(function(res){
+      this.listViewService.lists = [];
       console.log(res);
-    });
+    }.bind(this));
   }
 
   editUser(user) {

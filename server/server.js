@@ -206,9 +206,10 @@ app.post('/update', function(req, res) {
 });
 
 app.post("/delete_list", function(req, res) {
+  console.log("in server",req.body.id);
   var id = req.body.id;
   ListItemModel.remove(
-    {_id: req.body.id},
+    {_id: id},
     function(err){
       if (err) {
         res.status(500);
@@ -227,16 +228,10 @@ app.post("/delete_list", function(req, res) {
         });
     });
 });
-/*
- * app.get('/matches', function(req,res){
- *   listitems.aggregate([
- *  // filter? out lists with the currentUserId
- *     { $unwind: "$items" }, // take items out of all lists
- *     { $group: { _id: null, itms: { $push: "$items" } } }, //create a new id and push all items arrays to the itms object array 
- *     { $project: { _id: 0, items: "$itms" } } // set _id to 0 and create the items array object from the itms object array 
- *   ])
- * })
- */
+
+app.get('/artist_array', function(req, res) {
+  res.sendfile(__dirname+"/server/artist2.txt");
+});
 
 app.use(function(req, res, next) {
   res.status(404);

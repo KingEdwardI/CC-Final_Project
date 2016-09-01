@@ -15,9 +15,10 @@ var ListViewComponent = (function () {
         this.listViewService = listViewService;
         this.new_list_item = '';
     }
-    ListViewComponent.prototype.deleteItem = function (index) {
+    ListViewComponent.prototype.deleteList = function () {
         this.listViewService
-            .removeFromList(index, this.list._id);
+            .deleteList(this.list._id).subscribe(function (res) {
+        });
     };
     ListViewComponent.prototype.addToList = function () {
         this.listViewService

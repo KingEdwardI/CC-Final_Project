@@ -8,12 +8,15 @@ constructor(private apiService: ApiService) {
   this.getSavedLists().subscribe();
 }
 
-saved;
+saved = [];
 
   getSavedLists() {
     return this.apiService.get("/saved")
     .do(function(res) {
-      this.saved = res.savedList;
+      for(let i = 0; i < res.savedList.length; i++){
+        this.saved.push(res.savedList[i]);
+      }
+      console.log(res.savedList);
     }.bind(this));
   }
 

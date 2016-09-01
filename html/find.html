@@ -1,17 +1,22 @@
-<div class="wrapper">
-  <h2> Discover New Music </h2>
-  <div>
-    <div *ngFor='let obj of findService.lists; let k = index'> 
-      <div class="uk-panel-box">
-        <h4>{{ obj.title }} from {{ obj.username }}</h4> 
-        <button class='uk-button' (click)="saveList(k)"> 
-          Save
-        </button> 
-        <ul class="uk-list uk-list-line">
-          <li *ngFor='let item of obj.items; let i = index'>
-            {{item}}
-          </li>
-        </ul>
+<div class="uk-cover-background uk-overlay">
+  <img src="../source/img/purple2.png" alt="discover" width="100%" height="100%">
+  <div class="uk-overlay-panel">
+    <div class="wrapper">
+      <h2> Discover New Music </h2>
+      <div>
+        <div *ngFor='let obj of findService.lists; let k = index'> 
+          <div class="uk-panel-box">
+            <h4>{{ obj.title }} </h4> 
+            <button class='uk-button' (click)="saveList(k)"> 
+              Save
+            </button> 
+            <ul class="uk-list uk-list-line">
+              <li *ngFor='let item of obj.items; let i = index'>
+                {{item}}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

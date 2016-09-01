@@ -1,8 +1,14 @@
 .wrapper {
   padding-left: 50px;
+  overflow-y: scroll;
 }
 .uk-panel-box {
   height: 350px;
   width: 350px;
   overflow-y: scroll;
+  float: left;
+}
+.uk-cover-background.uk-overlay {
+  height: 100%;
+  width: 100%;
 }

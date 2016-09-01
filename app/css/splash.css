@@ -1,6 +1,28 @@
 div.uk-cover-background.uk-overlay {
   width: 100%;
-  height: 500px;
+  height: 100%;
 }
 
+div.uk-block-muted {
+  width: 400px;
+  height: 500px;
+  margin-left: 100px;
+  margin-top: 75px;
+  opacity: 0.5;
+  color: #05050F;
+  border-radius: 4px;
+  background-color: #9F87AF;
+  box-shadow: 5px 5px 100px 20px #540B3A inset;
+}
 
+div.uk-block {
+  float: right;
+  margin-right: 300px;
+}
+
+button.uk-button {
+  background-color: #9F87AF;
+  color: #05050F;
+  text-shadow: 1px 1px #25252F;
+  opacity: 0.5;
+}

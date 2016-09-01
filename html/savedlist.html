@@ -1,8 +1,16 @@
-<div>
-  <h1> Saved Lists </h1>
-  <div *ngFor='let array of savedListService.saved'> 
-    <p>{{array}}</p>
+<div class="uk-cover-background uk-overlay">
+  <img src="../source/img/purple3.jpeg" alt="saved lists" class="uk-img-preserve" width="100%" height="100%">
+  <div class="uk-overlay-panel">
+    <div class="uk-block-muted">
+      <h1> Saved Artists </h1>
+      <div class="inner">
+        <ul class="uk-list uk-list-line" >
+          <li id="no" *ngFor='let array of savedListService.saved; let i = index'> 
+           {{ array }}
+         </li>
+        </ul>
+      </div> 
+    </div>
   </div>
 </div>
-
 

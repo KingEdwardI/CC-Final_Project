@@ -10,8 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var login_service_1 = require("./login/login.service");
 var SplashPage = (function () {
-    function SplashPage() {
+    function SplashPage(router, loginService) {
+        this.router = router;
+        this.loginService = loginService;
     }
     SplashPage = __decorate([
         core_1.Component({
@@ -20,7 +23,7 @@ var SplashPage = (function () {
             templateUrl: '/html/splash.html',
             styleUrls: ["app/css/splash.css"]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
     ], SplashPage);
     return SplashPage;
 }());

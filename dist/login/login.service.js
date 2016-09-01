@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var api_service_1 = require("../api.service");
+var list_view_service_1 = require("../myList/list-view.service");
 var LoginService = (function () {
-    function LoginService(router, apiService) {
+    function LoginService(router, apiService, listViewService) {
         this.router = router;
         this.apiService = apiService;
+        this.listViewService = listViewService;
         this.authenticated = false;
     }
     LoginService.prototype.authenticate = function (path, creds) {
@@ -23,6 +25,7 @@ var LoginService = (function () {
             if (response.status === "success") {
                 this.authenticated = true;
                 this.user = response.userInfo;
+                this.listViewService.loadUserLists();
             }
             this.router.navigate(['/mylist']);
         }.bind(this));
@@ -33,8 +36,9 @@ var LoginService = (function () {
         this.router.navigate(['login']);
         this.apiService.post('/logout', "")
             .subscribe(function (res) {
+            this.listViewService.lists = [];
             console.log(res);
-        });
+        }.bind(this));
     };
     LoginService.prototype.editUser = function (user) {
         return this.apiService.post("/edit-user", JSON.stringify(user))
@@ -50,7 +54,7 @@ var LoginService = (function () {
     };
     LoginService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [router_1.Router, api_service_1.ApiService])
+        __metadata('design:paramtypes', [router_1.Router, api_service_1.ApiService, list_view_service_1.ListViewService])
     ], LoginService);
     return LoginService;
 }());

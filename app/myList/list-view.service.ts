@@ -6,9 +6,11 @@ export class ListViewService {
   userList =[];
 
   constructor(private apiService: ApiService) {
-    this.getUserList().subscribe();
   }
 
+  loadUserLists() {
+    this.getUserList().subscribe();
+  }
   createList(list_title) {
     return this.apiService.post("/create", JSON.stringify({
       list: {
@@ -44,20 +46,29 @@ export class ListViewService {
     }
   }
 
-  deleteList(index){
-    return this.apiService.post("/delete", JSON.stringify({
-      id: i
-    })).do(function(res) {
-      this.userList = res;
-    }.bind(this)); 
-  }
 
-  deleteItem(list, index) {
-    return this.apiService.post("/delete_list", JSON.stringify({
-      id: i
-    })).do(function(res) {
-      this.userList.items = res;
-    }.bind(this));
-  }
+    deleteList(list_id){
+      return this.apiService.post("/delete_list", JSON.stringify({
+        id: list_id
+      })).do(function(res) {
+        console.log(this.userList)
+        this.userList.splice(i,1);  
+      }.bind(this)); 
+    }
+ 
+    autoComplete() {
+      return this.apiService.get("/artist_array", function(req,res) {
+        console.log('autoComplete response', res)
+      });
+    }
+ /* 
+ *   deleteItem(list, index) {
+ *     return this.apiService.post("/delete_list", JSON.stringify({
+ *       id: i
+ *     })).do(function(res) {
+ *       this.userList.items = res;
+ *     }.bind(this));
+ *   }
+ */
 
 }

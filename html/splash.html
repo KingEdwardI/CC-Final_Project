@@ -1,22 +1,14 @@
 <div class="uk-cover-background uk-overlay">
-  
-  <!-- TODO: fix image resizing -->
-
   <img src="./source/img/music1.jpg" alt="header" class="uk-img-preserve">
   <figcaption class="uk-overlay-panel"> 
-    <h1> Music ^ Shift </h1>
-    <p> Discover new music. Share your music. Spread the love.
-    </p>
-  </figcaption>
-</div>
-<div class="uk-cover-background uk-overlay">
-  <img src="./source/img/music3.jpg" width="100%" class="uk-img-preserve" alt="Login Area">
-  <div class="uk-overlay-panel">
-    <div class="uk-flex-center uk-flex-middle">
-      <h2> Login </h2>
-      <button class="uk-button"> Login </button>
+    <div class="uk-block">
+      <button class="uk-button" [class.active]="router.isActive('/', true)" routerLink="/login"> Login </button>
     </div>
-  </div>
+    <div class="uk-block-muted">
+      <h1> Music ^ Shift </h1>
+      <p> Discover new music. Share your music. Spread the love.</p>
+    </div>
+  </figcaption>
 </div>
 <div>
   Footer stuff will go here

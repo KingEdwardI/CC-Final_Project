@@ -1,6 +1,14 @@
-<div class="title">
-  <input class="uk-form-large" id='title' type='text' placeholder='Title' [(ngModel)]='list_title' (keyup.enter)='createList()'/>
-  <p> {{list_title}} </p>
-  <button class="uk-button" (click)="createList()">Create New</button>
+<div class="uk-cover-background uk-overlay">
+  <img src="../source/img/mylist.jpg" alt="my Lists" class="uk-img-preserve">
+  <div class="uk-overlay-panel">
+    <div class="top"></div>
+    <div class="side"></div>
+    <div class="title">
+      <div class="uk-autocomplete uk-form" data-uk-autocomplete="{source: '../source/artists.json'}">
+      <input class="uk-form-large" id='title' type='text' placeholder='Title' [(ngModel)]='list_title' (keyup.enter)='createList()'/>
+      </div>
+      <button class="uk-button" (click)="createList()">Create New</button>
+    </div>
+    <list-view *ngFor='let list of listViewService.userList; let i = index' [list]='list'></list-view>
+  </div>
 </div>
-<list-view *ngFor='let list of listViewService.userList; let i = index' [list]='list'></list-view>

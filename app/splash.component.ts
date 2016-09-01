@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ROUTER_DIRECTIVES, Router } from "@angular/router";
+import { LoginService } from "./login/login.service";
 
 @Component({
   selector: "splash",
@@ -9,4 +10,6 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
 })
 
 export class SplashPage { 
+  constructor(private router: Router,
+              private loginService: LoginService) {}
 }
