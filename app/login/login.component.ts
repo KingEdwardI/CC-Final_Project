@@ -6,7 +6,8 @@ import { ApiService } from "../api.service";
 
 @Component ({
   selector: "login",
-  templateUrl: "/html/login.html"
+  templateUrl: "/html/login.html",
+  styleUrls: ["app/css/login.css"]
 })
 export class LoginComponent { 
   mode: string = "login";

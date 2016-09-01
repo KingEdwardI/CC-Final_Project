@@ -183,6 +183,7 @@ app.post('/saved', function(req,res) {
             return;
           }
           console.log(data);
+          res.send(JSON.stringify(data));
         });
     });
 });

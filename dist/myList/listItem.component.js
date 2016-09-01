@@ -24,7 +24,8 @@ var ListItemComponent = (function () {
     ListItemComponent = __decorate([
         core_1.Component({
             selector: 'list-item',
-            templateUrl: "../../html/list-item.html"
+            templateUrl: "../../html/list-item.html",
+            styleUrls: ["app/css/list-item.css"]
         }), 
         __metadata('design:paramtypes', [])
     ], ListItemComponent);

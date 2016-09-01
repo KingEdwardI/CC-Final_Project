@@ -1,0 +1,8 @@
+body {
+  background-color: red;
+}
+.title{
+  background-color: blue;
+  width: 150px;
+  height: 100%;
+}

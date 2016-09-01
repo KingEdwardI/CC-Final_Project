@@ -17,8 +17,8 @@ var SplashPage = (function () {
         core_1.Component({
             selector: "splash",
             directives: router_1.ROUTER_DIRECTIVES.slice(),
-            styleUrls: ["/css/splash.css"],
-            templateUrl: '/html/splash.html'
+            templateUrl: '/html/splash.html',
+            styleUrls: ["app/css/splash.css"]
         }), 
         __metadata('design:paramtypes', [])
     ], SplashPage);

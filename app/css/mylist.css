@@ -1,9 +1,9 @@
 .title{
-  width: 150px;
+  width: 200px;
   height: 100%;
   float: left;
   z-index: -1;
-  margin-right: 10px;
+  margin-right: 70px;
 }
 list-view {
   float: left;

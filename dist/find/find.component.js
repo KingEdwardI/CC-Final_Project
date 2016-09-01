@@ -24,7 +24,8 @@ var FindComponent = (function () {
     FindComponent = __decorate([
         core_1.Component({
             selector: "find",
-            templateUrl: '../../html/find.html'
+            templateUrl: '../../html/find.html',
+            styleUrls: ['app/css/find.css']
         }), 
         __metadata('design:paramtypes', [find_service_1.FindService])
     ], FindComponent);

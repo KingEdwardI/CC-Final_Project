@@ -1,0 +1,8 @@
+.wrapper {
+  padding-left: 50px;
+}
+.uk-panel-box {
+  height: 350px;
+  width: 350px;
+  overflow-y: scroll;
+}

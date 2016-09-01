@@ -4,8 +4,8 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
 @Component({
   selector: "splash",
   directives: [ ...ROUTER_DIRECTIVES ],
-  styleUrls: ["/css/splash.css"],
-  templateUrl: '/html/splash.html'
+  templateUrl: '/html/splash.html',
+  styleUrls: ["app/css/splash.css"]
 })
 
 export class SplashPage { 

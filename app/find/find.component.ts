@@ -5,7 +5,8 @@ import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: "find",
-  templateUrl: '../../html/find.html'
+  templateUrl: '../../html/find.html',
+  styleUrls: ['app/css/find.css']
 })
 export class FindComponent {
 

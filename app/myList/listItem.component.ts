@@ -4,7 +4,8 @@ import { ListViewService } from "./list-view.service";
 
 @Component ({
   selector: 'list-item',
-  templateUrl: "../../html/list-item.html"
+  templateUrl: "../../html/list-item.html",
+  styleUrls: ["app/css/list-item.css"]
 
 })
 

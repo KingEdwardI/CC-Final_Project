@@ -1,12 +1,12 @@
 #wrapper {
-  padding-left: 150;
+  padding-left: 200;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
     left: 250px;
-    width: 150px;
+    width: 200px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
@@ -69,4 +69,5 @@
 #page-content-wrapper, .container-fluid, .row {
   height: 100%;
   float: left;
+  width: 100%;
 }

@@ -1,10 +1,12 @@
-<div class="lists">
-  <label> {{list.title | json}} </label>
-  <button class="btn btn-default" (click)="deletList.emit()"> - </button>
+<div class="uk-panel-box" id="lists">
+  <button class="uk-button uk-button-danger uk-button-mini" (click)="deletList.emit()"> remove </button>
+  <h4 class="uk-panel-title"> {{list.title | json}} </h4>
   <br/>
   <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item" (keyup.enter)='addToList()'/>
-  <button class="btn btn-default" (click)="addToList()">Add to list</button>
-</div>
+  <button class="uk-button" (click)="addToList()">Add to list</button>
 <br/>
-<list-item *ngFor='let item of list.items; let i = index' [item]='item' (onDelete)="deleteItem(list, i)">
-</list-item>
+<ul class="uk-list uk-list-line">
+    <list-item *ngFor='let item of list.items; let i = index' [item]='item' (onDelete)="deleteItem(list, i)">
+    </list-item>
+</ul>
+</div>
