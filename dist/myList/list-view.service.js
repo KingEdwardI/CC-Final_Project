@@ -52,15 +52,7 @@ var ListViewService = (function () {
     ListViewService.prototype.deleteList = function (list_id) {
         return this.apiService.post("/delete_list", JSON.stringify({
             id: list_id
-        })).do(function (res) {
-            console.log(this.userList);
-            this.userList.splice(i, 1);
-        }.bind(this));
-    };
-    ListViewService.prototype.autoComplete = function () {
-        return this.apiService.get("/artist_array", function (req, res) {
-            console.log('autoComplete response', res);
-        });
+        })).do(function (res) { }.bind(this));
     };
     ListViewService = __decorate([
         core_1.Injectable(), 

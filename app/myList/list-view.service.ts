@@ -50,17 +50,16 @@ export class ListViewService {
     deleteList(list_id){
       return this.apiService.post("/delete_list", JSON.stringify({
         id: list_id
-      })).do(function(res) {
-        console.log(this.userList)
-        this.userList.splice(i,1);  
-      }.bind(this)); 
+      })).do(function(res) {}.bind(this)); 
     }
  
-    autoComplete() {
-      return this.apiService.get("/artist_array", function(req,res) {
-        console.log('autoComplete response', res)
-      });
-    }
+    /*
+     * autoComplete() {
+     *   return this.apiService.get("/artist_array", function(req,res) {
+     *     console.log('autoComplete response', res)
+     *   });
+     * }
+     */
  /* 
  *   deleteItem(list, index) {
  *     return this.apiService.post("/delete_list", JSON.stringify({

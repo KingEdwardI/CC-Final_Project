@@ -5,7 +5,7 @@
     <div class="side"></div>
     <div class="title">
       <div class="uk-autocomplete uk-form" data-uk-autocomplete="{source: '../source/artists.json'}">
-      <input class="uk-form-large" id='title' type='text' placeholder='Title' [(ngModel)]='list_title' (keyup.enter)='createList()'/>
+      <input class="uk-form-large" id='title' type='text' placeholder='Title' [(ngModel)]='list_title' (keyup)="autoComplete()" (keyup.enter)='createList()'/>
       </div>
       <button class="uk-button" (click)="createList()">Create New</button>
     </div>
