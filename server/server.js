@@ -204,6 +204,28 @@ app.post('/update', function(req, res) {
   );
 });
 
+app.post("/delete_list", function(req, res) {
+  var id = req.body.id;
+  ListItemModel.remove(
+    {_id: req.body.id},
+    function(err){
+      if (err) {
+        res.status(500);
+        res.send("Error deleting list items");
+        return;
+      }
+      ListItemModel.find(
+        {},
+        function(err, data) {
+          if(err) {
+            res.status(500);
+            res.send("Error getting all Lists");
+            return;
+          }
+          return JSON.stringify(data);
+        });
+    });
+});
 /*
  * app.get('/matches', function(req,res){
  *   listitems.aggregate([

@@ -11,11 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var ListItemComponent = (function () {
     function ListItemComponent() {
+        this.deleteItem = new core_1.EventEmitter();
     }
     __decorate([
         core_1.Input("item"), 
         __metadata('design:type', Object)
     ], ListItemComponent.prototype, "item", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], ListItemComponent.prototype, "deleteItem", void 0);
     ListItemComponent = __decorate([
         core_1.Component({
             selector: 'list-item',

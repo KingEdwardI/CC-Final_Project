@@ -14,17 +14,8 @@ var ListViewService = (function () {
     function ListViewService(apiService) {
         this.apiService = apiService;
         this.userList = [];
-        // this.getAllLists().subscribe();
         this.getUserList().subscribe();
     }
-    /*
-     * getAllLists() {
-     *   return this.apiService.get("/all")
-     *   .do(function(res) {
-     *     this.lists = res;
-     *   }.bind(this));
-     * }
-     */
     ListViewService.prototype.createList = function (list_title) {
         return this.apiService.post("/create", JSON.stringify({
             list: {
@@ -55,6 +46,20 @@ var ListViewService = (function () {
                 orig[i].items.push(new_song);
             }
         }
+    };
+    ListViewService.prototype.deleteList = function (index) {
+        return this.apiService.post("/delete", JSON.stringify({
+            id: i
+        })).do(function (res) {
+            this.userList = res;
+        }.bind(this));
+    };
+    ListViewService.prototype.deleteItem = function (list, index) {
+        return this.apiService.post("/delete_list", JSON.stringify({
+            id: i
+        })).do(function (res) {
+            this.userList.items = res;
+        }.bind(this));
     };
     ListViewService = __decorate([
         core_1.Injectable(), 

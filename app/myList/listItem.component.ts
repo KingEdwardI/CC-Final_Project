@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { ListViewService } from "./list-view.service";
 
 
@@ -11,5 +11,6 @@ import { ListViewService } from "./list-view.service";
 export class ListItemComponent {
   
   @Input("item") item;
+  @Output() deleteItem = new EventEmitter();
 
 }

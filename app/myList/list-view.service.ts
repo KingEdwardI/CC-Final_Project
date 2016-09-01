@@ -6,18 +6,8 @@ export class ListViewService {
   userList =[];
 
   constructor(private apiService: ApiService) {
-    // this.getAllLists().subscribe();
     this.getUserList().subscribe();
   }
-
-  /*
-   * getAllLists() {
-   *   return this.apiService.get("/all")
-   *   .do(function(res) {
-   *     this.lists = res;
-   *   }.bind(this));
-   * }
-   */
 
   createList(list_title) {
     return this.apiService.post("/create", JSON.stringify({
@@ -49,8 +39,25 @@ export class ListViewService {
   pushToList(id, orig, new_song) {
     for (let i in orig) {
       if (orig[i]._id === id ) {
-        orig[i].items.push(new_song);
+          orig[i].items.push(new_song);
       }
     }
   }
+
+  deleteList(index){
+    return this.apiService.post("/delete", JSON.stringify({
+      id: i
+    })).do(function(res) {
+      this.userList = res;
+    }.bind(this)); 
+  }
+
+  deleteItem(list, index) {
+    return this.apiService.post("/delete_list", JSON.stringify({
+      id: i
+    })).do(function(res) {
+      this.userList.items = res;
+    }.bind(this));
+  }
+
 }

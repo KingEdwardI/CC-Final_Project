@@ -15,6 +15,11 @@ export class ListViewComponent {
 
   @Input() list;
 
+  deleteItem(index){
+    this.listViewService
+    .removeFromList(index, this.list._id)
+  }
+
   new_list_item = '';
   @Input() newListItem;
 
