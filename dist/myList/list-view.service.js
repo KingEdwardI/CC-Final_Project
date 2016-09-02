@@ -56,7 +56,7 @@ var ListViewService = (function () {
         return this.apiService.post("/delete_list", JSON.stringify({
             id: list_id
         })).do(function (res) {
-            // this.userList.splice(i, 1);
+            this.userList = res;
         }.bind(this));
     };
     ListViewService.prototype.autoComplete = function () {

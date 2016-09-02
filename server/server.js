@@ -206,10 +206,8 @@ app.post('/update', function(req, res) {
 });
 
 app.post("/delete_list", function(req, res) {
-  console.log("in server",req.body.id);
-  var id = req.body.id;
   ListItemModel.remove(
-    {_id: id},
+    { _id : req.body.id },
     function(err){
       if (err) {
         res.status(500);
