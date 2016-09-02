@@ -1,20 +1,21 @@
 <div class="uk-panel-box" id="lists">
   <button class="uk-button uk-button-danger uk-button-mini" (click)="deleteList()"> remove </button>
-  <h4 class="uk-panel-title"> {{list.title | json}} </h4>
+  <h4 class="uk-panel-title"> {{list.title}} </h4>
   <br/>
   <div class="input-field">
     <input id='item' type='text' placeholder='Add New' [(ngModel)]="new_list_item" (keyup)='filter()' (keyup.enter)='addToList()'/>
+    <button class="uk-button" (click)="addToList()">Add to list</button>
   </div>
   <div class="suggestions" *ngIf="filteredList.length > 0">
+  </div>
     <ul>
-      <li *ngFor="let item of filteredList" >
-        <a (click)="select(item)"> {{item}} </a>
+      <li *ngFor="let artist of filteredList" >
+        <a (click)="select(artist)"> {{artist}} </a>
       </li>
     </ul>
-  <button class="uk-button" (click)="addToList()">Add to list</button>
 <br/>
 <ul class="uk-list uk-list-line">
-    <list-item *ngFor='let item of list.items; let i = index' [item]='item' (onDelete)="deleteList(list, i)">
+    <list-item *ngFor='let item of list.items; let i = index' [item]='item' (onDelete)="deleteList(list)">
     </list-item>
 </ul>
 </div>

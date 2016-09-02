@@ -15,8 +15,10 @@ var ListViewService = (function () {
         this.apiService = apiService;
         this.userList = [];
         this.artists = [];
+        this.autoComplete().subscribe();
     }
     ListViewService.prototype.loadUserLists = function () {
+        console.log("workde:");
         this.getUserList().subscribe();
     };
     ListViewService.prototype.createList = function (list_title) {
@@ -60,7 +62,6 @@ var ListViewService = (function () {
     ListViewService.prototype.autoComplete = function () {
         return this.apiService.get("/artist_array").do(function (res) {
             this.artists = res;
-            console.log(res);
         }.bind(this));
     };
     ListViewService = __decorate([

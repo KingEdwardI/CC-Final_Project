@@ -7,9 +7,11 @@ export class ListViewService {
   artists = [];
 
   constructor(private apiService: ApiService) {
+    this.autoComplete().subscribe();
   }
 
   loadUserLists() {
+    console.log("workde:")
     this.getUserList().subscribe();
   }
 
@@ -60,7 +62,6 @@ export class ListViewService {
     autoComplete() {
       return this.apiService.get("/artist_array").do(function(res) {
         this.artists = res;
-        console.log(res)
       }.bind(this));
     }
 

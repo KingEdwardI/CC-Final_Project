@@ -17,9 +17,7 @@ export class SavedListService {
   getSavedLists() {
     return this.apiService.get("/saved")
     .do(function(res) {
-      for(let i = 0; i < res.savedList.length; i++){
-        this.savedList.push(res.savedList[i]);
-      }
+        this.savedList = res.savedList ;
       console.log(res.savedList);
     }.bind(this));
   }

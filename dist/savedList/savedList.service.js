@@ -22,9 +22,7 @@ var SavedListService = (function () {
     SavedListService.prototype.getSavedLists = function () {
         return this.apiService.get("/saved")
             .do(function (res) {
-            for (var i = 0; i < res.savedList.length; i++) {
-                this.savedList.push(res.savedList[i]);
-            }
+            this.savedList = res.savedList;
             console.log(res.savedList);
         }.bind(this));
     };

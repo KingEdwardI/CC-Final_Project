@@ -29,10 +29,9 @@ var ListViewComponent = (function () {
         });
     };
     ListViewComponent.prototype.filter = function () {
-        this.listViewService.autoComplete().subscribe();
         if (this.new_list_item !== "") {
             this.filteredList = this.listViewService.artists.filter(function (el) {
-                return el.toLowerCase().indexOf(this.new_list_item.toLowerCase()) > -1;
+                return el.indexOf(this.new_list_item) > -1;
             }.bind(this));
         }
         else {
