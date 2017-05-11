@@ -15,7 +15,7 @@
     </ul>
 <br/>
 <ul class="uk-list uk-list-line">
-    <list-item *ngFor='let item of list.items; let i = index' [item]='item' (onDelete)="deleteList(list)">
+    <list-item *ngFor='let item of list.items; let i = index' [item]='item' (onDelete)="deleteItem(list,index)">
     </list-item>
 </ul>
 </div>

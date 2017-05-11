@@ -16,6 +16,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true}));
+
 app.use(expressSession({
   secret: "g.o.a.t",
   resave: false,
@@ -215,7 +216,7 @@ app.post("/delete_list", function(req, res) {
         return;
       }
       ListItemModel.find(
-        {},
+        { userId : req.session.userId },
         function(err, data) {
           if(err) {
             res.status(500);

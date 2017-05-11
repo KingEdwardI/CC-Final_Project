@@ -18,7 +18,6 @@ export class SavedListService {
     return this.apiService.get("/saved")
     .do(function(res) {
         this.savedList = res.savedList ;
-      console.log(res.savedList);
     }.bind(this));
   }
 

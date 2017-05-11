@@ -11,4 +11,6 @@
 .uk-cover-background.uk-overlay {
   height: 100%;
   width: 100%;
+  overflow-y: scroll;
+  background-image: url('../../source/img/purple2.png');
 }

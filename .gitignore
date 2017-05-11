@@ -5,3 +5,4 @@ pre
 .DS_Store
 dist
 typings
+*.log

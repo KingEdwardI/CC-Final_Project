@@ -1,6 +1,7 @@
 .uk-cover-background.uk-overlay {
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 }
 .uk-block-muted {
   background-color: #9f87af;
